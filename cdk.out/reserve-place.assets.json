@@ -1,0 +1,19 @@
+{
+  "version": "22.0.0",
+  "files": {
+    "12d50f1be76fa7a47e5f4d41c6f4f4571d8e7d43e2d02781c2eef60a366b383e": {
+      "source": {
+        "path": "reserve-place.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "12d50f1be76fa7a47e5f4d41c6f4f4571d8e7d43e2d02781c2eef60a366b383e.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
