@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/12d50f1be76fa7a47e5f4d41c6f4f4571d8e7d43e2d02781c2eef60a366b383e.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fcdd02ec1426951005a4796562d51a2755d50073ff814036a0ada18078134f49.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -34,6 +34,78 @@
         "reserve-place.assets"
       ],
       "metadata": {
+        "/reserve-place/reserveApi/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApi868AC999"
+          }
+        ],
+        "/reserve-place/reserveApi/CloudWatchRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApiCloudWatchRoleEF28EAFD"
+          }
+        ],
+        "/reserve-place/reserveApi/Account": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApiAccount6CF411D6"
+          }
+        ],
+        "/reserve-place/reserveApi/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApiDeployment1CB32C2Ff6cde458ffe44879874713a23d646a07"
+          }
+        ],
+        "/reserve-place/reserveApi/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApiDeploymentStageprodB0C80A74"
+          }
+        ],
+        "/reserve-place/reserveApi/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApiEndpointC4896716"
+          }
+        ],
+        "/reserve-place/reserveApi/Default/hello/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApihelloC2270D9E"
+          }
+        ],
+        "/reserve-place/reserveApi/Default/hello/GET/ApiPermission.reserveplacereserveApiF1D916A1.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApihelloGETApiPermissionreserveplacereserveApiF1D916A1GEThello48A5F781"
+          }
+        ],
+        "/reserve-place/reserveApi/Default/hello/GET/ApiPermission.Test.reserveplacereserveApiF1D916A1.GET..hello": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApihelloGETApiPermissionTestreserveplacereserveApiF1D916A1GEThelloB7B626E4"
+          }
+        ],
+        "/reserve-place/reserveApi/Default/hello/GET/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "reserveApihelloGETE0962835"
+          }
+        ],
+        "/reserve-place/helloLambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambdaServiceRoleBB046714"
+          }
+        ],
+        "/reserve-place/helloLambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "helloLambda79DCE371"
+          }
+        ],
         "/reserve-place/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
