@@ -7,11 +7,14 @@ import {
 } from "aws-cdk-lib/aws-lambda";
 import { join } from "path";
 import { LambdaIntegration, RestApi } from "aws-cdk-lib/aws-apigateway";
+import { GenericTable } from "./GenericTable";
 
 export class SpaceStack extends Stack {
   //to initialize RestApi
-
   private api = new RestApi(this, "reserveApi");
+
+  //Create table from GenericTable
+  private reserveTable = new GenericTable("ReserveTable", "reserveId", this);
 
   constructor(scope: Construct, id: string, props: StackProps) {
     super(scope, id, props);

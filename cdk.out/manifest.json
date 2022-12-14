@@ -17,7 +17,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/fcdd02ec1426951005a4796562d51a2755d50073ff814036a0ada18078134f49.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/b15529103eb26310b103a0fa89853309ab4f7ce89b60f2ffa01deb990ec3cacb.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -92,6 +92,20 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "reserveApihelloGETE0962835"
+          }
+        ],
+        "/reserve-place/ReserveTable": [
+          {
+            "type": "aws:cdk:hasPhysicalName",
+            "data": {
+              "Ref": "ReserveTable107C79D5"
+            }
+          }
+        ],
+        "/reserve-place/ReserveTable/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ReserveTable107C79D5"
           }
         ],
         "/reserve-place/helloLambda/ServiceRole/Resource": [

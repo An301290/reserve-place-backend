@@ -368,6 +368,54 @@
               "version": "2.54.0"
             }
           },
+          "ReserveTable": {
+            "id": "ReserveTable",
+            "path": "reserve-place/ReserveTable",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "reserve-place/ReserveTable/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "keySchema": [
+                      {
+                        "attributeName": "reserveId",
+                        "keyType": "HASH"
+                      }
+                    ],
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "reserveId",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "tableName": "ReserveTable"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.54.0"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "reserve-place/ReserveTable/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.54.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.54.0"
+            }
+          },
           "helloLambda": {
             "id": "helloLambda",
             "path": "reserve-place/helloLambda",
