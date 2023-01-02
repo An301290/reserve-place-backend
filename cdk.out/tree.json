@@ -368,6 +368,54 @@
               "version": "2.54.0"
             }
           },
+          "ReserveTable": {
+            "id": "ReserveTable",
+            "path": "reserve-place/ReserveTable",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "reserve-place/ReserveTable/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::DynamoDB::Table",
+                  "aws:cdk:cloudformation:props": {
+                    "keySchema": [
+                      {
+                        "attributeName": "reserveId",
+                        "keyType": "HASH"
+                      }
+                    ],
+                    "attributeDefinitions": [
+                      {
+                        "attributeName": "reserveId",
+                        "attributeType": "S"
+                      }
+                    ],
+                    "provisionedThroughput": {
+                      "readCapacityUnits": 5,
+                      "writeCapacityUnits": 5
+                    },
+                    "tableName": "ReserveTable"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_dynamodb.CfnTable",
+                  "version": "2.54.0"
+                }
+              },
+              "ScalingRole": {
+                "id": "ScalingRole",
+                "path": "reserve-place/ReserveTable/ScalingRole",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.54.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_dynamodb.Table",
+              "version": "2.54.0"
+            }
+          },
           "helloLambda": {
             "id": "helloLambda",
             "path": "reserve-place/helloLambda",
@@ -485,6 +533,131 @@
             },
             "constructInfo": {
               "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.54.0"
+            }
+          },
+          "helloLambdaNodeJs": {
+            "id": "helloLambdaNodeJs",
+            "path": "reserve-place/helloLambdaNodeJs",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "reserve-place/helloLambdaNodeJs/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "reserve-place/helloLambdaNodeJs/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.54.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "reserve-place/helloLambdaNodeJs/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.54.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.54.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "reserve-place/helloLambdaNodeJs/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "reserve-place/helloLambdaNodeJs/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.54.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "reserve-place/helloLambdaNodeJs/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.54.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.54.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "reserve-place/helloLambdaNodeJs/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "e0690592dd9efac22e9fedd9ad94ef31d0e6b404bbf9142b33bba636f8bd9287.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "helloLambdaNodeJsServiceRole17C143C3",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
+                      }
+                    },
+                    "handler": "index.handler",
+                    "runtime": "nodejs14.x"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.54.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda_nodejs.NodejsFunction",
               "version": "2.54.0"
             }
           },
